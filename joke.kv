@@ -1,0 +1,176 @@
+<Jokes>:
+    on_pre_enter:
+        print ("555")
+    MDBoxLayout:
+        orientation:"vertical"
+        MDTopAppBar:
+        	elevation:1
+        	id:navi
+        	title:"MEMES"
+        	specific_text_color:"#FFFFFF"
+        	left_action_items:[["menu",lambda x:nav.set_state("open")]]
+        	right_action_items:[["cog"],["dots-vertical",lambda x:root.menu()]]
+        	
+        MDBottomNavigation:
+            id:d
+        	
+        	selected_color_background:1,1,1,0
+        	
+        	text_color_active: "#2196F3"
+        	
+        	MDBottomNavigationItem:
+        	    id:tela
+        	    text:"Piadas"
+        	
+            	name:"tela"
+            	icon:"emoticon-happy"
+            	theme_icon_color:"Custom"
+            	icon_color:"#333355"
+            	MDScreen:
+            	  
+            	    on_pre_leave:app.ver()
+            	       
+            	    MDFloatLayout:
+            	        MDScrollView:
+            	            MDBoxLayout:
+            	                id:py
+            	                effect_cls:"ScrollEffect"
+            	                spacing:30
+            	                orientation:"vertical"
+            	                size_hint_y:None
+            	                height:self.minimum_height
+            	                padding:20,40,20,20
+            	                
+            
+        	MDBottomNavigationItem:
+        	    id:tela1
+        	   
+        	
+            	name:"tela1"
+            	text:"favoritas"
+            	icon:"cards-heart"
+            	MDScreen:
+            	    on_pre_leave:app.ver()
+            	    
+            	       
+            	       
+            	    MDFloatLayout:
+            	        MDScrollView:
+            	            MDBoxLayout:
+            	                id:pys
+                                effect_cls:"ScrollEffect"
+            	                spacing:30
+            	                orientation:"vertical"
+            	                size_hint_y:None
+            	                height:self.minimum_height
+            	                padding:20,40,20,20
+            	                
+            	                
+    MDNavigationDrawer:
+        id:nav     
+        radius:[0,0,0,0]
+        MDNavigationDrawerMenu:
+            MDNavigationDrawerHeader:
+            	source:"XwI7.gif"
+               
+                padding:"15dp",0,0,0
+                title:"MEMES"
+                text:"versao 1.0"
+                spacing:"20dp"
+            MDNavigationDrawerItem:
+                text:"Albert Last Version"
+                icon:"facebook"
+                _ripple_color:"#333222"
+                on_release:app.Copiar(self.text)
+                focus_color:0,0,0,0
+                unfocus_color:0,0,0,0
+                ripple_color:0,0,0,0
+            MDNavigationDrawerItem:
+                text:"CodewithMrx"
+                icon:"youtube"
+                on_release:app.Copiar(self.text)
+                focus_color:0,0,0,0
+                unfocus_color:0,0,0,0
+                ripple_color:0,0,0,0
+               
+            MDNavigationDrawerItem:
+                text:"albertguambe67@gmail.com"
+                icon:"email"
+                on_release:app.Copiar(self.text)
+                focus_color:0,0,0,0
+                unfocus_color:0,0,0,0
+                ripple_color:0,0,0,0
+            MDNavigationDrawerItem:
+                text:"Tema"
+                icon:"theme-light-dark"
+                on_release:app.conf()
+                focus_color:0,0,0,0
+                unfocus_color:0,0,0,0
+                ripple_color:0,0,0,0
+                
+                
+   
+<card>:
+    elevation:0.38
+    size_hint_y:None
+    height:170
+    radius:[0,0,0,0]
+    padding:10
+    MDLabel:
+        id:texto
+        text:
+        
+    MDCard:
+        orientation:"vertical"
+        size_hint_x:.16
+        radius:[0,0,0,0]
+        
+        MDIconButton:
+            icon:"cards-heart-outline"
+            id:bu
+            theme_icon_color:"Custom"
+            icon_color:"#2196F3"
+          
+        MDIconButton:
+            icon:"content-copy"
+            theme_icon_color:"Custom"
+            icon_color:"#2196F3"
+            on_release:app.copiar(root.ids.texto.text)
+    
+<cards>:
+    elevation:0.38
+    size_hint_y:None
+    height:170
+    radius:[0,0,0,0]
+    padding:10
+    MDLabel:
+        id:textos
+        text:
+    MDCard:
+        orientation:"vertical"
+        size_hint_x:.16
+        radius:[0,0,0,0]
+        
+        MDIconButton:
+            icon:"cards-heart"
+            id:bu
+            theme_icon_color:"Custom"
+            icon_color:"#2196F3"
+          
+        MDIconButton:
+            icon:"content-copy"
+            theme_icon_color:"Custom"
+            icon_color:"#2196F3"
+            on_release:app.copiar(root.ids.textos.text)
+           
+          
+<presplash>:
+    MDFloatLayout:
+        Image:
+            source:"/storage/emulated/0/Download/memes-high-resolution-logo-transparent.png"
+<tem>:
+   
+    CheckboxLeftWidget:
+        group:"check"
+        on_active:
+            app.temas(root.text)
